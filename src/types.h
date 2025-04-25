@@ -1,16 +1,22 @@
 /* 
  * File:   types.h
- * Author: KRIK
+ * Author: krik
  *
- * Created on 22 Декабрь 2010 г., 11:43
+ * Created on November 13, 2013, 12:45 AM
  */
 
-#ifndef _TYPES_H
-#define	_TYPES_H
+#ifndef TYPES_H
+#define	TYPES_H
 
-#define u8 unsigned char
-#define u16 unsigned short
-#define u32 unsigned long
+#define s8      char
+#define s16     short
+#define s32     long
 
-#endif	/* _TYPES_H */
+#define u8      unsigned char
+#define u16     unsigned short
+#define u32     unsigned long
+#define u64     unsigned long long
+
+
+#endif	/* TYPES_H */
 
