@@ -15,7 +15,7 @@
 #define BANK_CFG2_REG *((u8 *)0xfffc)
 
 #define SPI_PORT *((u8 *)0x7f00)
-#define STATE_PORT *((u8 *)0x7f01)
+#define STATE_PORT *((volatile u8 *)0x7f01)
 #define FIFO_PORT *((u8 *)0x7f02)
 #define FIRM_VERSION *((u8 *)0x7f03)
 
@@ -66,6 +66,6 @@
 #define SPI_SPEED_OFF CFG_REG &= ~(1 << _CFG_SPI_FULL_SPEED)
 #define SPI_SPEED_ON CFG_REG |= (1 << _CFG_SPI_FULL_SPEED)
 
-#define OS_VERSION 4
+#define OS_VERSION 6
 #endif	/* _EVERDRIVE_H */
 

@@ -1,3 +1,3 @@
 PATH=%PATH%;E:/sdcc/bin
-make -f Makefile
+sdcc -mz80 --no-std-crt0 main.c 
 pause

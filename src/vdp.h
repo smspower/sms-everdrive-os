@@ -32,6 +32,7 @@ void vdpDrawNum(u8 *coment, u32 num, u8 x, u8 y, u8 pal);
 void vdpDrawStrRt(u8 *str, u8 x, u8 y, u8 pal);
 void vdp_load_sms_pal();
 void vdp_load_gg_pal();
+void vdp_load_sg_pal();
 
 extern u8 vdp_pal;
 extern u16 vdp_pos;

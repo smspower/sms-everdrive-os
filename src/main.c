@@ -126,6 +126,7 @@ void main() {
 
 void startGame() {
 
+
     u8 i;
     u8 *rom_ptr = (u8*) 0xbfe9;
     volatile u8 codemasters = 1;
@@ -139,6 +140,17 @@ void startGame() {
     norm_size &= 0xf;
     system = *((u8 *) 0xbfff);
     system >>= 4;
+
+    // if (system < 5) {
+
+    if (IS_GG_CART) {
+        CFG_REG |= 1 << _CFG_SMS_MODE;
+        vdp_load_sg_pal();
+        if (system >= 5) {
+            r_start_cfg &= ~(1 << _CFG_SMS_MODE);
+        }
+    }
+
 
 
     //norm_size = (u8) (norm_size == 0xc ? 32 : norm_size == 0xe ? 64 : norm_size == 0xf ? 128 : norm_size == 0 ? 256 : norm_size == 1 ? 512 : 1024) / 16;
@@ -172,8 +184,13 @@ void startGame() {
 
     r_start_cfg = codemasters ? 1 << _CFG_CDM_MAP : 0;
     r_start_cfg |= 1 << _CFG_ROM_WE_OFF;
-    if (system < 5)r_start_cfg |= 1 << _CFG_SMS_MODE;
-    if (hd_ptr[0] != 'T' || hd_ptr[1] != 'M' || hd_ptr[2] != 'R')r_start_cfg |= 1 << _CFG_SMS_MODE;
+    if (system < 5) {
+        r_start_cfg |= 1 << _CFG_SMS_MODE;
+    }
+    if (hd_ptr[0] != (u8) 'T' || hd_ptr[1] != (u8) 'M' || hd_ptr[2] != (u8) 'R')r_start_cfg |= 1 << _CFG_SMS_MODE;
+
+
+
 
     r_start_game();
 }

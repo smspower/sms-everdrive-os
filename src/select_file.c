@@ -23,7 +23,7 @@ u8 selectFile() {
     u16 dir_tree_top = 0;
     u16 key_friz = 0;
     u8 menu_items;
-    
+
     if (gg_mode) {
         menu_items = MENU_ITEMS_GG;
     } else {
@@ -48,6 +48,12 @@ u8 selectFile() {
             vdpDrawErr("can't read boot sector", resp);
             return 255;
         }
+        if (resp == 3) {
+            vdpDrawErr("unsupported fat", resp);
+            return 255;
+        }
+        vdpDrawErr("unknown error", resp);
+        return 255;
     }
 
     vdpDrawConsStr("open root...", PAL1);

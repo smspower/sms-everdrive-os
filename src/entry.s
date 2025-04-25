@@ -32,7 +32,12 @@
 
     .globl _port_cfg
 sms_init:
-    
+    ;nop
+    ;nop
+    ;ld (0xdfe2), sp
+    ;ld (0xdfe2), pc
+;bob:
+    ;jp bob
     di
     ld sp, #0xDFF0
     ld hl, #0xc002

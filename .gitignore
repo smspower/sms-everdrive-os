@@ -1,0 +1,13 @@
+*.lst
+*.rel
+*.ihx
+*.lk
+*.lnk
+*.map
+*.noi
+*.sms
+*.sym
+*.asm
+/src/nbproject/
+*.stackdump
+*.exe

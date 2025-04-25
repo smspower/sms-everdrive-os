@@ -10,17 +10,20 @@ OBJ= entry.rel main.rel vdp_a.rel vdp.rel menu_form.rel toolbox.rel mmc.rel mmc_
 OBJ_BOOT= boot_entry.rel
 
 
-all:	make_boot make_os
+all:	make_boot make_os make_build
 
 
 make_os:$(OBJ)
 	$(LINK) $(OBJ)   -o os.ihx
 	$(HOME)/makebin -s 32768 <os.ihx > os.sms
+	$(HOME)/makebin -s 32768 <os.ihx > repair.sms
 
 make_boot:$(OBJ_BOOT)
 	$(LINK) $(OBJ_BOOT)   -o boot.ihx
 	$(HOME)/makebin -s 32768 <boot.ihx > boot.sms
 	
+make_build:
+	./sms_os_build
 
 
 main.rel: main.c
